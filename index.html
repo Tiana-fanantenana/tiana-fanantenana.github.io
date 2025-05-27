@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza Milkshake Gaufres</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Ts'Art Kaly by JT</h1>
+        <nav id="nav">
+            <a href="#produits">Nos Produits</a>
+            <a href="#apropos">À propos</a>
+            <a href="#contact">Contact</a>
+            <a href="#menu">Nos menu</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h2>Des saveurs qui font fondre 🍓🧇</h2>
+        <p>Commandez vos délices préférés dès maintenant !</p>
+    </section>
+
+    <section id="produits" class="produits">
+        <h2>Nos Produits</h2>
+        <div class="carte-produit">
+            <img src="images/pizza.jpg" alt="Pizza">
+            <h3>Pizza</h3>
+        </div>
+        <div class="carte-produit">
+            <img src="images/milkshake.jpg" alt="Milkshake">
+            <h3>Milkshake </h3>
+        </div>
+        <div class="carte-produit">
+            <img src="images/gaufre.jpg" alt="Gaufre">
+            <h3>Gaufre</h3>
+        </div>
+    </section>
+
+    <section id="apropos" class="apropos">
+        <h2>À propos</h2>
+        <p>Je suis Helitiana, passionnée par la cuisine et le développement. Ce site vitrine est un projet personnel pour allier mes deux passions.</p>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Contact</h2>
+        <p>📞 +261 34 99 82 237</p>
+        <p>📧 tiana.fanantenana.ran@gmail.com</p>
+    </section>
+
+    <footer>
+        <p>© 2025 - Jongleur de talents</p>
+    </footer>
+
+    <script src="script.js"></script>
+<section id="menu" class="menu"></section>
+<div class="menu-container">
+    <h2>Notre Menu</h2>
+    <div class="filter-buttons">
+        <button onclick="filterMenu('all')">Tout</button>
+        <button onclick="filterMenu('pizza')">Pizza</button>
+        <button onclick="filterMenu('minesao')">Mine Sao</button>
+        <button onclick="filterMenu('milkshake')">Milkshake</button>
+        <button onclick="filterMenu('gaufre')">Gaufre</button>
+        <button onclick="filterMenu('jus')">Jus Naturel</button>
+    </div>
+    <div class="menu-items">
+        <div class="item pizza"><img src="images/Poulet.jpeg"><p>Poulet Express</p><p>15.000 Ar</p><button onclick="addToCart('Poulet Express')">Ajouter au panier</button> </div>
+        
+        <div class="item pizza"><img src="images/Charcutiere.jpeg"><p>La Charcutière</p><p>15.000 Ar</p><button onclick="addToCart('La Charcutière')">Ajouter au panier</button></div>
+        <div class="item pizza"><img src="images/Viandarde.jpeg"><p>La Viandarde</p><p>15.000 Ar</p><button onclick="addToCart('La Viandarde')">Ajouter au panier</button></div>
+        <div class="item pizza"><img src="images/Camberitti.jpeg"><p>Camberitti</p><p>22.000 Ar</p><button onclick="addToCart('Camberitti')">Ajouter au panier</button></div>
+        <div class="item pizza"><img src="images/Speciale.jpeg"><p>Spéciale Jongleur</p><p>25.000 Ar</p><button onclick="addToCart('Spéciale Jongleur')">Ajouter au panier</button></div>
+
+        <div class="item minesao"><img src="images/Minesao.jpg"><p>Mine Sao Spéciale</p><p>18.000 Ar</p><button onclick="addToCart('Spéciale Jongleur')">Ajouter au panier</button></div>
+
+        <div class="item milkshake"><img src="images/milkshake.jpg"><p>Milkshake parfum aux choix</p><p>5.000 Ar</p><button onclick="addToCart('Milkshake Fraise')">Ajouter au panier</button></div>
+        <div class="item gaufre"><img src="images/gaufre.jpg"><p>Gaufre au Chocolat + Chantilly</p><p>3.000 Ar</p><button onclick="addToCart('Gaufre Chocolat')">Ajouter au panier</button></div>
+        <div class="item jus"><img src="images/jus.jpg"><p>Jus Naturel 500 ml</p><p>2.000 Ar</p><button onclick="addToCart('Gaufre Chocolat')">Ajouter au panier</button></div>
+    </div>
+</div>
+</section>
+
+
+<div id="cart" style="position:fixed;top:10px;right:10px;background:#fff;border:1px solid #ccc;padding:10px;border-radius:10px;z-index:999;">
+    <h3>🛒 Panier</h3>
+    <ul id="cart-items" style="list-style:none;padding-left:0;"></ul>
+    <p>Total: <span id="cart-total">0</span> Ar</p>
+    <a id="whatsapp-order" target="_blank" href="#"><button>Commander via WhatsApp</button></a>
+</div>
+
+
+<!-- Ajout des CDN nécessaires dans le <head> -->
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+
+<!-- Ajout des sections au bas du <body> -->
+<section id="reservation" data-aos="fade-up">
+  <h2>Réserver une table / Commander</h2>
+  <form>
+    <label>Nom: <input type="text" required></label><br>
+    <label>Téléphone: <input type="tel" required></label><br>
+    <label>Date: <input type="date" required></label><br>
+    <label>Heure: <input type="time" required></label><br>
+    <label>Type: 
+      <select>
+        <option>Sur place</option>
+        <option>À emporter</option>
+      </select>
+    </label><br>
+    <button type="submit">Réserver</button>
+  </form>
+</section>
+
+<section id="avis" data-aos="fade-up">
+  <h2>Avis clients</h2>
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">"Super bon, rapide et délicieux!" – Marie</div>
+      <div class="swiper-slide">"Très bon rapport qualité/prix." – Jean</div>
+      <div class="swiper-slide">"Service excellent!" – Aline</div>
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+</section>
+
+<section id="contact" data-aos="fade-up">
+  <h2>Contactez-nous</h2>
+  <form action="https://formspree.io/f/your-form-id" method="POST">
+    <label>Nom: <input type="text" name="name" required></label><br>
+    <label>Email: <input type="email" name="email" required></label><br>
+    <label>Message: <textarea name="message" required></textarea></label><br>
+    <button type="submit">Envoyer</button>
+  </form>
+</section>
+
+<section id="localisation" data-aos="fade-up">
+  <h2>Nous trouver</h2>
+  <div id="map" style="height: 300px;"></div>
+  <p>🕒 Ouvert tous les jours de 9h à 22h</p>
+</section>
+
+<!-- Scripts à la fin du body -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
+  var swiper = new Swiper('.mySwiper', {
+    loop: true,
+    pagination: { el: '.swiper-pagination', clickable: true },
+  });
+  function initMap() {
+    var loc = { lat: -18.8792, lng: 47.5079 };
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 15, center: loc
+    });
+    new google.maps.Marker({ position: loc, map: map });
+  }
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
+
+</body>
+</html>
