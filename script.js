@@ -13,31 +13,46 @@ function filterMenu(category) {
 
 
 let cart = [];
-function addToCart(item) {
-    cart.push(item);
+function addToCart(name, price) {
+    cart.push({ name: name, price: price });
     updateCartDisplay();
 }
+
 
 function updateCartDisplay() {
     const cartItems = document.getElementById("cart-items");
     const cartTotal = document.getElementById("cart-total");
     const whatsappLink = document.getElementById("whatsapp-order");
+
     cartItems.innerHTML = "";
     let total = 0;
     let counts = {};
+    let prixParArticle = {};
+
     cart.forEach(item => {
-        counts[item] = (counts[item] || 0) + 1;
-        total += 5; // prix fictif par article
+        const { name, price } = item;
+        counts[name] = (counts[name] || 0) + 1;
+        prixParArticle[name] = price;
+        total += price;
     });
-    for (const item in counts) {
+
+    for (const name in counts) {
         const li = document.createElement("li");
-        li.textContent = `${item} x${counts[item]}`;
+        const prixTotal = counts[name] * prixParArticle[name];
+        li.textContent = `${name} x${counts[name]} – ${prixTotal.toLocaleString()} Ar`;
         cartItems.appendChild(li);
     }
-    cartTotal.textContent = total.toFixed(2);
-    let message = "Bonjour, je souhaite commander: %0A" + Object.entries(counts).map(([k, v]) => `- ${k} x${v}`).join("%0A");
-    whatsappLink.href = "https://wa.me/?text=" + message;
+
+    cartTotal.textContent = total.toLocaleString() + " Ar";
+
+    let message = "Bonjour, je souhaite commander:%0A" + 
+        Object.entries(counts)
+        .map(([name, qty]) => `- ${name} x${qty}`)
+        .join("%0A");
+
+    whatsappLink.href = "https://wa.me/261340946640?text=" + message;
 }
+
 
 
 document.addEventListener('DOMContentLoaded', function() {
