@@ -39,7 +39,10 @@ function updateCartDisplay() {
     for (const name in counts) {
         const li = document.createElement("li");
         const prixTotal = counts[name] * prixParArticle[name];
-        li.textContent = `${name} x${counts[name]} – ${prixTotal.toLocaleString()} Ar`;
+        li.innerHTML = `
+            ${name} x${counts[name]} – ${prixTotal.toLocaleString()} Ar 
+            <button onclick="removeFromCart('${name}')">❌</button>
+        `;
         cartItems.appendChild(li);
     }
 
@@ -55,6 +58,7 @@ function updateCartDisplay() {
 
 
 
+
 document.addEventListener('DOMContentLoaded', function() {
   const burger = document.querySelector('.burger');
   const nav = document.querySelector('nav ul');
@@ -64,3 +68,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
+function removeFromCart(name) {
+    const index = cart.findIndex(item => item.name === name);
+    if (index !== -1) {
+        cart.splice(index, 1);
+        updateCartDisplay();
+    }
+}
+
